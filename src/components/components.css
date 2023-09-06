@@ -1,0 +1,49 @@
+/* Side */
+.Side{
+    float: left;
+    width: 19vw;
+}
+
+/* Board */
+.Board{
+    float: right;
+    width: 79vw;
+    cursor: pointer;
+}
+/* FileList */
+#FileList{
+     float: right;
+     width: 80vw;
+}
+/*  Card */
+.Card{
+    align-items: center;
+    margin-top: 15vh;
+    margin-left: 30px;
+}
+.Card #Card_item{
+    border-radius: 20px;
+    width: 30vw;
+    height: 72vh; 
+}
+.Card img{
+    margin-top: 15px;
+    margin-left: 6px;
+    width: 29vw;
+    height: 50vh;
+}
+.Card #Card-btn{
+    margin-bottom: 20px;
+    width: 20vh;
+}
+.Card #Card_text{
+    text-align: center;
+}
+/* NavBar */
+.NavBar .NavBar-img{
+    margin-right: 10px;
+}
+.NavBar #NavBar-Link{
+    text-decoration:  none;
+    color: black;
+}

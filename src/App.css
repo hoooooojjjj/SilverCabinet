@@ -1,0 +1,8 @@
+.App {
+  
+}
+/* Welcome_Card */
+.Welcome_Card{
+    display: flex;
+    justify-content: center;
+}
