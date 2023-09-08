@@ -1,9 +1,22 @@
 import React from "react";
 import Card from "../components/Card";
+import Button from "@mui/material/Button";
+import { useNavigate } from "react-router-dom";
 const Welcome = () => {
+  const nav = useNavigate();
   return (
     <div className="Welcome">
-      <header></header>
+      <header>
+        <Button
+          onClick={() => {
+            nav("/signin");
+          }}
+          id="Welcome_btn"
+          variant="contained"
+        >
+          로그인
+        </Button>
+      </header>
       <main>
         <div className="Welcome_Card">
           <Card

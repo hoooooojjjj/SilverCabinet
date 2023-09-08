@@ -1,8 +1,13 @@
 .App {
   
 }
-/* Welcome_Card */
+/* Welcome */
 .Welcome_Card{
     display: flex;
     justify-content: center;
+}
+.Welcome #Welcome_btn{
+    position: absolute;
+    right: 15px;
+    top : 10px;
 }
