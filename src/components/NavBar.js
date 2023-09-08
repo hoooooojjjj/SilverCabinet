@@ -6,8 +6,12 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 import "./components.css";
 import { Link, useNavigate } from "react-router-dom";
 
-function NavBar() {
+function NavBar({ whatFileType }) {
   const nav = useNavigate();
+
+  const handleFileTypeClick = (e) => {
+    whatFileType(e.target.name);
+  };
   return (
     <div className="NavBar">
       <Navbar expand="lg" className="bg-body-tertiary">
@@ -40,13 +44,13 @@ function NavBar() {
                 title="서식"
                 id="basic-nav-dropdown"
               >
-                <NavDropdown.Item href="#action/3.1">
+                <NavDropdown.Item name="개원" onClick={handleFileTypeClick}>
                   개원 서식
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
+                <NavDropdown.Item name="운영" onClick={handleFileTypeClick}>
                   운영 서식
                 </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">
+                <NavDropdown.Item name="평가" onClick={handleFileTypeClick}>
                   평가 서식
                 </NavDropdown.Item>
               </NavDropdown>
