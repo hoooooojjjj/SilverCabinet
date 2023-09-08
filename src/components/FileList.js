@@ -25,28 +25,17 @@ export default function InteractiveList({
   const [filename, setFileName] = useState("");
 
   useEffect(() => {
+    // 서식 변경 할때 초기화
     setFileName("");
-    nameTable.map((name, index) => {
-      // 처음엔 맨 위 파일이 렌더링
-      if (index === 0) {
-        setFileName(name);
-        const pyunggaFolderRef = ref(storage, `${whatFile}/${name}`);
+    setFileNames([]);
 
-        listAll(pyunggaFolderRef)
-          .then((res) => {
-            const names = res.items.map((item) => item.name);
-            setFileNames(names);
-          })
-          .catch((error) => {
-            console.error("파일 목록을 가져오는 중 오류 발생:", error);
-          });
-      }
-      // 이후 파일을 side에서 선택하면 그 파일로 리렌더링
+    nameTable.map((name) => {
+      // 파일을 side에서 선택하면 그 파일로 리렌더링
       if (name === whatFilesname) {
         setFileName(name);
-        const pyunggaFolderRef = ref(storage, `${whatFile}/${name}`);
+        const FolderRef = ref(storage, `${whatFile}/${name}`);
 
-        listAll(pyunggaFolderRef)
+        listAll(FolderRef)
           .then((res) => {
             const names = res.items.map((item) => item.name);
             setFileNames(names);

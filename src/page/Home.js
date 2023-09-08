@@ -10,7 +10,7 @@ import { unyoungnameTable } from "../LongTermfilenameTable/unyoug";
 import { pyungganameTable } from "../LongTermfilenameTable/pyungga";
 
 const Home = () => {
-  const [whatFile, setwhatFile] = useState("평가"); // 어떤 서식인지 - 개원 / 운영 / 평가
+  const [whatFile, setwhatFile] = useState("개원"); // 어떤 서식인지 - 개원 / 운영 / 평가
   const [whatFilesname, setwhatFilesname] = useState("");
   const whatFileType = (type) => {
     switch (type) {
