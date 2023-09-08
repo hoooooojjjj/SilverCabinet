@@ -1,20 +1,30 @@
-import React from "react";
+import React, { useContext } from "react";
 import Card from "../components/Card";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
+import { userIsLoginContext } from "../App";
+import { signOut } from "firebase/auth";
+import { auth } from "../Myfirebase";
 const Welcome = () => {
   const nav = useNavigate();
+  const islogin = useContext(userIsLoginContext);
   return (
     <div className="Welcome">
       <header>
         <Button
           onClick={() => {
-            nav("/signin");
+            if (islogin) {
+              if (window.confirm("로그아웃 하시겠습니까?")) {
+                signOut(auth);
+              }
+            } else {
+              nav("/signin");
+            }
           }}
           id="Welcome_btn"
           variant="contained"
         >
-          로그인
+          {islogin ? "로그아웃" : "로그인"}
         </Button>
       </header>
       <main>
