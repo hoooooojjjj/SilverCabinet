@@ -4,8 +4,13 @@ import Board from "../components/Board";
 import NavBar from "../components/NavBar";
 import Side from "../components/Side";
 import FileList from "../components/FileList";
+
+import { gaeonenameTable } from "../LongTermfilenameTable/gaeone";
+import { unyoungnameTable } from "../LongTermfilenameTable/unyoug";
+import { pyungganameTable } from "../LongTermfilenameTable/pyungga";
+
 const Home = () => {
-  const [whatFile, setwhatFile] = useState(); // 어떤 서식인지 - 개원 / 운영 / 평가
+  const [whatFile, setwhatFile] = useState("개원"); // 어떤 서식인지 - 개원 / 운영 / 평가
   const whatFileType = (type) => {
     switch (type) {
       case "개원":
@@ -29,7 +34,7 @@ const Home = () => {
         </header>
         <main>
           <Board />
-          <Side />
+          <Side nameTable={gaeonenameTable} />
           <FileList />
         </main>
         <footer></footer>
@@ -43,7 +48,7 @@ const Home = () => {
         </header>
         <main>
           <Board />
-          <Side />
+          <Side nameTable={unyoungnameTable} />
           <FileList />
         </main>
         <footer></footer>
@@ -57,7 +62,7 @@ const Home = () => {
         </header>
         <main>
           <Board />
-          <Side />
+          <Side nameTable={pyungganameTable} />
           <FileList />
         </main>
         <footer></footer>

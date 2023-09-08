@@ -9,24 +9,14 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import "./components.css";
 
-const Side = () => {
+const Side = ({ nameTable }) => {
   return (
     <div className="Side">
-      <ListItemButton>
-        <ListItemText primary="Dashboard" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Orders" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Customers" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Reports" />
-      </ListItemButton>
-      <ListItemButton>
-        <ListItemText primary="Integrations" />
-      </ListItemButton>
+      {nameTable.map((name, index) => (
+        <ListItemButton key={index}>
+          <ListItemText primary={name} />
+        </ListItemButton>
+      ))}
     </div>
   );
 };
