@@ -10,7 +10,8 @@ import { unyoungnameTable } from "../LongTermfilenameTable/unyoug";
 import { pyungganameTable } from "../LongTermfilenameTable/pyungga";
 
 const Home = () => {
-  const [whatFile, setwhatFile] = useState("개원"); // 어떤 서식인지 - 개원 / 운영 / 평가
+  const [whatFile, setwhatFile] = useState("평가"); // 어떤 서식인지 - 개원 / 운영 / 평가
+  const [whatFilesname, setwhatFilesname] = useState("");
   const whatFileType = (type) => {
     switch (type) {
       case "개원":
@@ -26,6 +27,10 @@ const Home = () => {
         break;
     }
   };
+  const whatFilesnameType = (type) => {
+    setwhatFilesname(() => type);
+    console.log(whatFilesname);
+  };
   if (whatFile === "개원") {
     return (
       <div>
@@ -34,8 +39,15 @@ const Home = () => {
         </header>
         <main>
           <Board />
-          <Side nameTable={gaeonenameTable} />
-          <FileList />
+          <Side
+            nameTable={gaeonenameTable}
+            whatFilesnameType={whatFilesnameType}
+          />
+          <FileList
+            nameTable={gaeonenameTable}
+            whatFilesname={whatFilesname}
+            whatFile={whatFile}
+          />
         </main>
         <footer></footer>
       </div>
@@ -48,8 +60,15 @@ const Home = () => {
         </header>
         <main>
           <Board />
-          <Side nameTable={unyoungnameTable} />
-          <FileList />
+          <Side
+            nameTable={unyoungnameTable}
+            whatFilesnameType={whatFilesnameType}
+          />
+          <FileList
+            nameTable={unyoungnameTable}
+            whatFilesname={whatFilesname}
+            whatFile={whatFile}
+          />
         </main>
         <footer></footer>
       </div>
@@ -62,8 +81,15 @@ const Home = () => {
         </header>
         <main>
           <Board />
-          <Side nameTable={pyungganameTable} />
-          <FileList />
+          <Side
+            nameTable={pyungganameTable}
+            whatFilesnameType={whatFilesnameType}
+          />
+          <FileList
+            nameTable={pyungganameTable}
+            whatFilesname={whatFilesname}
+            whatFile={whatFile}
+          />
         </main>
         <footer></footer>
       </div>

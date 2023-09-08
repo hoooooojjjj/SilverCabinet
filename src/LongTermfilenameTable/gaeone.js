@@ -1,1 +1,1 @@
-export const gaeonenameTable = [];
+export const gaeonenameTable = ["1", "2"];

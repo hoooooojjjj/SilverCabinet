@@ -1,1 +1,1 @@
-export const unyoungnameTable = [];
+export const unyoungnameTable = ["1", "2"];

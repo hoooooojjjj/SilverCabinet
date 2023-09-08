@@ -4,12 +4,17 @@ import ListItemText from "@mui/material/ListItemText";
 
 import "./components.css";
 
-const Side = ({ nameTable }) => {
+const Side = ({ nameTable, whatFilesnameType }) => {
   return (
     <div className="Side">
       {nameTable.map((name, index) => (
         <ListItemButton key={index}>
-          <ListItemText primary={name} />
+          <ListItemText
+            onClick={() => {
+              whatFilesnameType(name);
+            }}
+            primary={name}
+          />
         </ListItemButton>
       ))}
     </div>
