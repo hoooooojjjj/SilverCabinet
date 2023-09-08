@@ -47,8 +47,6 @@ export default function InteractiveList({
     });
   }, [whatFilesname, whatFile]);
 
-  console.log(fileNames);
-
   const [dense, setDense] = React.useState(false);
   return (
     <Box id="FileList">

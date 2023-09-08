@@ -29,7 +29,6 @@ const Home = () => {
   };
   const whatFilesnameType = (type) => {
     setwhatFilesname(() => type);
-    console.log(whatFilesname);
   };
   if (whatFile === "개원") {
     return (
