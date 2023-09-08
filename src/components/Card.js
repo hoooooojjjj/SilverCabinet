@@ -7,7 +7,10 @@ function BasicExample({ titleText, text, path }) {
   return (
     <div className="Card">
       <Card id="Card_item">
-        <img src={process.env.PUBLIC_URL + "/assets/Logo_text.jpg"}></img>
+        <img
+          src={process.env.PUBLIC_URL + "/assets/Logo_text.jpg"}
+          alt="로고"
+        ></img>
         <Card.Body>
           <div id="Card_text">
             <Card.Title>{titleText}</Card.Title>

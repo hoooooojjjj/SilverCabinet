@@ -23,6 +23,7 @@ function NavBar({ whatFileType }) {
             className="NavBar-img"
             style={{ width: 50, height: 50 }}
             src={process.env.PUBLIC_URL + "/assets/Logo.jpg"}
+            alt="로고"
           ></img>
           <Navbar.Brand>
             <Link id="NavBar-Link" to={"/"}>
