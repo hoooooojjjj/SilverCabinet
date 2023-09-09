@@ -17,6 +17,10 @@
      width: 75vw;
       margin-right: 50px;
 }
+#FileList #FileList_item{
+    cursor: pointer;
+}
+
 /*  Card */
 .Card{
     align-items: center;

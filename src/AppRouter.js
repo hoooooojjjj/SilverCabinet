@@ -7,6 +7,7 @@ import Signin from "./page/Signin";
 import Signup from "./page/SignUp";
 import BoardWrite from "./page/BoardWrite";
 import BoardDetail from "./page/BoardDetail";
+import FileDetail from "./page/FileDetail";
 
 const AppRouter = () => {
   return (
@@ -20,6 +21,7 @@ const AppRouter = () => {
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/boardwrite" element={<BoardWrite />}></Route>
           <Route path="/boarddetail/:id" element={<BoardDetail />}></Route>
+          <Route path="/filedetail/?" element={<FileDetail />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

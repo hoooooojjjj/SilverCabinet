@@ -11,6 +11,7 @@ import FolderIcon from "@mui/icons-material/Folder";
 import "./components.css";
 import { storage } from "../Myfirebase";
 import { ref, listAll } from "firebase/storage";
+import { useNavigate } from "react-router-dom";
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -21,6 +22,8 @@ export default function InteractiveList({
   whatFilesname,
   whatFile,
 }) {
+  const nav = useNavigate();
+
   const [fileNames, setFileNames] = useState([]);
   const [filename, setFileName] = useState("");
 
@@ -34,7 +37,7 @@ export default function InteractiveList({
       if (name === whatFilesname) {
         setFileName(name);
         const FolderRef = ref(storage, `${whatFile}/${name}`);
-
+        // 파일 이름을 리스트로 가져오기
         listAll(FolderRef)
           .then((res) => {
             const names = res.items.map((item) => item.name);
@@ -56,12 +59,20 @@ export default function InteractiveList({
         </Typography>
         <Demo>
           <List dense={dense}>
-            {fileNames.map((filename, index) => (
-              <ListItem key={index}>
+            {fileNames.map((filenames, index) => (
+              <ListItem
+                key={index}
+                id="FileList_item"
+                onClick={() => {
+                  nav(
+                    `/fileDetail?one=${whatFile}&two=${filename}&three=${filenames}`
+                  );
+                }}
+              >
                 <ListItemIcon>
                   <FolderIcon />
                 </ListItemIcon>
-                <ListItemText primary={filename} />
+                <ListItemText primary={filenames} />
               </ListItem>
             ))}
           </List>
