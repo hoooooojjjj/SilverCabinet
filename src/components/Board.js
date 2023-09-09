@@ -13,30 +13,9 @@ function createData(id, date, name, shipTo, paymentMethod, amount) {
 }
 
 const rows = [
-  createData(
-    0,
-    "16 Mar, 2019",
-    "Elvis Presley",
-    "Tupelo, MS",
-    "VISA ⠀•••• 3719",
-    312.44
-  ),
-  createData(
-    1,
-    "16 Mar, 2019",
-    "Paul McCartney",
-    "London, UK",
-    "VISA ⠀•••• 2574",
-    866.99
-  ),
-  createData(
-    2,
-    "16 Mar, 2019",
-    "Tom Scholz",
-    "Boston, MA",
-    "MC ⠀•••• 1253",
-    100.81
-  ),
+  createData(0, "Elvis Presley", "Tupelo, MS", "VISA ⠀•••• 3719", 312.44),
+  createData(1, "Paul McCartney", "London, UK", "VISA ⠀•••• 2574", 866.99),
+  createData(2, "Tom Scholz", "Boston, MA", "MC ⠀•••• 1253", 100.81),
   createData(
     3,
     "16 Mar, 2019",
@@ -64,21 +43,19 @@ export default function Board() {
       <Table size="small">
         <TableHead>
           <TableRow>
-            <TableCell>Date</TableCell>
-            <TableCell>Name</TableCell>
-            <TableCell>Ship To</TableCell>
-            <TableCell>Payment Method</TableCell>
-            <TableCell align="right">Sale Amount</TableCell>
+            <TableCell>순번</TableCell>
+            <TableCell>제목</TableCell>
+            <TableCell>작성자</TableCell>
+            <TableCell>등록날짜</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
           {rows.map((row) => (
             <TableRow key={row.id}>
-              <TableCell>{row.date}</TableCell>
+              <TableCell>{row.id}</TableCell>
               <TableCell>{row.name}</TableCell>
               <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{row.paymentMethod}</TableCell>
-              <TableCell align="right">{`$${row.amount}`}</TableCell>
+              <TableCell>{`$${row.amount}`}</TableCell>
             </TableRow>
           ))}
         </TableBody>

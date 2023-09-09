@@ -7,13 +7,15 @@
 /* Board */
 .Board{
     float: right;
-    width: 79vw;
+    width: 75vw;
     cursor: pointer;
+    margin-right: 50px;
 }
 /* FileList */
 #FileList{
      float: right;
-     width: 79vw;
+     width: 75vw;
+      margin-right: 50px;
 }
 /*  Card */
 .Card{
@@ -46,4 +48,17 @@
 .NavBar #NavBar-Link{
     text-decoration:  none;
     color: black;
+}
+/* FileList */
+
+#FileList .FileList_h5{
+    display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center;
+    margin-top: 15vh;
+}
+
+#FileList .FileList_h5_text{
+    /* margin-top: 10vh; */
 }
