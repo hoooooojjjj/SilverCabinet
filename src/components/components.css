@@ -50,15 +50,3 @@
     color: black;
 }
 /* FileList */
-
-#FileList .FileList_h5{
-    display: flex;
-    flex-direction: column;
-    justify-content: center; 
-    align-items: center;
-    margin-top: 15vh;
-}
-
-#FileList .FileList_h5_text{
-    /* margin-top: 10vh; */
-}

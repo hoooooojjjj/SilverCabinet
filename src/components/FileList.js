@@ -50,37 +50,23 @@ export default function InteractiveList({
   const [dense, setDense] = React.useState(false);
   return (
     <Box id="FileList">
-      {fileNames.length !== 0 ? (
-        <Grid item xs={12} md={6}>
-          <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-            {whatFile} {`${filename}`}
-          </Typography>
-          <Demo>
-            <List dense={dense}>
-              {fileNames.map((filename, index) => (
-                <ListItem key={index}>
-                  <ListItemIcon>
-                    <FolderIcon />
-                  </ListItemIcon>
-                  <ListItemText primary={filename} />
-                </ListItem>
-              ))}
-            </List>
-          </Demo>
-        </Grid>
-      ) : (
-        <div className="FileList_h5">
-          <h5 className="FileList_h5_text">
-            서식 탭에서 필요하신 서식을 선택하고 좌측에서 파일 종류를
-            선택해주세요
-          </h5>
-          <br />
-          <h5 className="FileList_h5_text">
-            파일 종류를 선택하신 후 현재 위치에 뜨는 파일들을 선택해 클릭 후
-            다운로드를 진행해주세요
-          </h5>
-        </div>
-      )}
+      <Grid item xs={12} md={6}>
+        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+          {whatFile} {`${filename}`}
+        </Typography>
+        <Demo>
+          <List dense={dense}>
+            {fileNames.map((filename, index) => (
+              <ListItem key={index}>
+                <ListItemIcon>
+                  <FolderIcon />
+                </ListItemIcon>
+                <ListItemText primary={filename} />
+              </ListItem>
+            ))}
+          </List>
+        </Demo>
+      </Grid>
     </Box>
   );
 }
