@@ -28,6 +28,10 @@ const Welcome = () => {
         </Button>
       </header>
       <main>
+        <h4>
+          <strong>요양원 / 주간보호 서식의 창구</strong> 블랙엔젤의
+          실버캐비넷입니다.
+        </h4>
         <div className="Welcome_Card">
           <Card
             titleText={"요양원 서식"}

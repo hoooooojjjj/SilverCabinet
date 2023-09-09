@@ -1,4 +1,4 @@
-import Button from "react-bootstrap/Button";
+import Button from "@mui/material/Button";
 import Card from "react-bootstrap/Card";
 import "./components.css";
 import { useNavigate } from "react-router-dom";
@@ -23,7 +23,7 @@ function BasicExample({ titleText, text, path }) {
               nav(`/${path}`);
             }}
             id="Card-btn"
-            variant="primary"
+            variant="contained"
           >
             들어가기
           </Button>
