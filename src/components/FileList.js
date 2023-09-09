@@ -25,7 +25,14 @@ export default function InteractiveList({
   const nav = useNavigate();
 
   const [fileNames, setFileNames] = useState([]);
-  const [filename, setFileName] = useState("");
+  const [filename, setFileName] = useState(localStorage.getItem("file") || "");
+
+  // 컴포넌트가 언마운트될 때 마지막으로 선택한 걸 저장 후 다시 마운트 됐을 때 저장된 거 보여주기
+  useEffect(() => {
+    return () => {
+      localStorage.setItem("file", filename);
+    };
+  });
 
   useEffect(() => {
     // 서식 변경 할때 초기화
@@ -35,7 +42,7 @@ export default function InteractiveList({
     nameTable.map((name) => {
       // 파일을 side에서 선택하면 그 파일로 리렌더링
       if (name === whatFilesname) {
-        setFileName(name);
+        setFileName((args) => name);
         const FolderRef = ref(storage, `${whatFile}/${name}`);
         // 파일 이름을 리스트로 가져오기
         listAll(FolderRef)
@@ -65,7 +72,7 @@ export default function InteractiveList({
                 id="FileList_item"
                 onClick={() => {
                   nav(
-                    `/fileDetail?one=${whatFile}&two=${filename}&three=${filenames}`
+                    `/fileDetail?fileType=${whatFile}&file=${filename}&name=${filenames}`
                   );
                 }}
               >

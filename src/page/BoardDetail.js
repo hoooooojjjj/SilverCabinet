@@ -28,6 +28,7 @@ const BoardDetail = () => {
         onClick={() => {
           nav("/LongTerm");
         }}
+        variant="contained"
       >
         뒤로가기
       </Button>

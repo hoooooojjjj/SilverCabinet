@@ -1,23 +1,28 @@
 import React from "react";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../Myfirebase";
-import { useParams, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
+
+import Button from "@mui/material/Button";
 
 const FileDetail = () => {
   // query stirng -> ?키=값&키=값&키=값....
   const [searchParams, setsearchParams] = useSearchParams();
-  const one = searchParams.get("one"); // searchParams는 키를 매개변수로 보내 전달받은 값을 사용할 수 있음
-  const two = searchParams.get("two");
-  const three = searchParams.get("three");
-  console.log(one, two, three);
+  const fileType = searchParams.get("fileType"); // searchParams는 키를 매개변수로 보내 전달받은 값을 사용할 수 있음
+  const file = searchParams.get("file");
+  const name = searchParams.get("name");
+
+  const nav = useNavigate();
   const fileDown = async () => {
     try {
-      const url = await getDownloadURL(ref(storage, `${one}/${two}/${three}`));
+      const url = await getDownloadURL(
+        ref(storage, `${fileType}/${file}/${name}`)
+      );
 
       // Create a temporary anchor element to trigger the download
       const a = document.createElement("a");
       a.href = url;
-      a.download = `${three}`; // Specify the file name you want to use
+      a.download = `${name}`; // Specify the file name you want to use
       document.body.appendChild(a);
       a.click();
       document.body.removeChild(a);
@@ -26,8 +31,40 @@ const FileDetail = () => {
     }
   };
   return (
-    <div>
-      <button onClick={fileDown}>sdaf</button>
+    <div className="FileDown">
+      <div className="FileDown_content">
+        <h2 className="FileDown_h2">{name}</h2>
+        <div className="FileDown_p">
+          <p>
+            <b>분량</b> : 2 page
+          </p>
+          <p>
+            <b>파일 포멧</b> : docs
+          </p>
+          <p>
+            <b>무료/유료</b> : 무료
+          </p>
+        </div>
+        {/* <SelectCard
+            img1={process.env.PUBLIC_URL + "/assets/demo_file_img.png"}
+            img2={process.env.PUBLIC_URL + "/assets/demo_file_img.png"}
+            img3={process.env.PUBLIC_URL + "/assets/demo_file_img.png"}
+          /> */}
+        <div className="FileDown_btn">
+          <Button id="FileDown_btn1" onClick={fileDown} variant="contained">
+            파일 다운로드
+          </Button>
+          <Button
+            id="FileDown_btn2"
+            onClick={() => {
+              nav("/LongTerm");
+            }}
+            variant="contained"
+          >
+            뒤로 가기
+          </Button>
+        </div>
+      </div>
     </div>
   );
 };

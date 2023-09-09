@@ -8,13 +8,13 @@ const Side = ({ nameTable, whatFilesnameType }) => {
   return (
     <div className="Side">
       {nameTable.map((name, index) => (
-        <ListItemButton key={index}>
-          <ListItemText
-            onClick={() => {
-              whatFilesnameType(name);
-            }}
-            primary={name}
-          />
+        <ListItemButton
+          onClick={() => {
+            whatFilesnameType(name);
+          }}
+          key={index}
+        >
+          <ListItemText primary={name} />
         </ListItemButton>
       ))}
     </div>

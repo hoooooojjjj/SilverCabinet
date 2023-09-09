@@ -10,3 +10,47 @@
 .BoardDetail .BoardDetail_content{
     border-top: 1px solid black;
   }
+
+  /* FileDetail */
+.FileDown .FileDown_content{
+    float: right;
+    margin-right: 10vw;
+    margin-top: 3vw;
+  }
+  
+  .FileDown .FileDown_content .FileDown_h2{
+    display: inline-block;
+    margin-left: 30px;
+    width: 46vw;
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+  }
+  .FileDown .FileDown_content .FileDown_p{
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+    margin-left: 50px;
+    padding-left: 10px;
+    width: 46vw;
+    padding-bottom: 10px;
+    margin-bottom: 20px ;
+    padding-top: 20px;
+  }
+  .FileDown .FileDown_btn{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .FileDown .FileDown_content #FileDown_btn1{
+    margin-top: 30px;
+    margin-left: 5vw;
+    width: 20vw;
+    height: 7vh;
+    font-weight: bold;
+  }
+  .FileDown .FileDown_content #FileDown_btn2{
+    margin-top: 30px;
+    margin-left: 5vw;
+    width: 20vw;
+    height: 7vh;
+    font-weight: bold;
+  }
