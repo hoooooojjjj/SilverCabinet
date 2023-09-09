@@ -6,6 +6,7 @@ import Welcome from "./page/Welcome";
 import Signin from "./page/Signin";
 import Signup from "./page/SignUp";
 import BoardWrite from "./page/BoardWrite";
+import BoardDetail from "./page/BoardDetail";
 
 const AppRouter = () => {
   return (
@@ -18,6 +19,7 @@ const AppRouter = () => {
           <Route path="/signin" element={<Signin />}></Route>
           <Route path="/signup" element={<Signup />}></Route>
           <Route path="/boardwrite" element={<BoardWrite />}></Route>
+          <Route path="/boarddetail/:id" element={<BoardDetail />}></Route>
         </Routes>
       </BrowserRouter>
     </div>

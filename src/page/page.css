@@ -1,0 +1,12 @@
+/* BoardDetail */
+.BoardDetail {
+    margin: 20px;
+}
+
+.BoardDetail h2{
+    margin-bottom: 20px;
+}
+
+.BoardDetail .BoardDetail_content{
+    border-top: 1px solid black;
+  }

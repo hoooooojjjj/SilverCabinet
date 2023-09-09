@@ -48,11 +48,15 @@ export default function Board() {
     const q = query(collection(db, "board"), orderBy("createAt", "desc"));
     const unsub = onSnapshot(q, (doc) => {
       const bordlist = doc.docs.map((doc) => {
-        return doc.data();
+        return { ...doc.data(), id: doc.id };
       });
       setbordlist(bordlist);
     });
   }, []);
+
+  const handleBoradClick = (doc) => {
+    nav(`/boarddetail/${doc.id}`);
+  };
 
   return (
     <div className="Board">
@@ -87,7 +91,12 @@ export default function Board() {
         </TableHead>
         <TableBody>
           {bordlist.map((doc, index) => (
-            <TableRow key={index}>
+            <TableRow
+              onClick={() => {
+                handleBoradClick(doc);
+              }}
+              key={index}
+            >
               <TableCell>{bordlist.length - index}</TableCell>
               <TableCell>{doc.title}</TableCell>
               <TableCell>{doc.creator}</TableCell>
