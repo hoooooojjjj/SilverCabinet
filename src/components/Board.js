@@ -1,4 +1,4 @@
-import * as React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -6,6 +6,11 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
 import "./components.css";
+import { userInfoContext } from "../App";
+import { useNavigate } from "react-router-dom";
+
+import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
+import { db } from "../Myfirebase";
 
 // Generate Order Data
 function createData(id, date, name, shipTo, paymentMethod, amount) {
@@ -35,11 +40,42 @@ const rows = [
 ];
 
 export default function Board() {
+  const user = useContext(userInfoContext);
+  const nav = useNavigate();
+  const [bordlist, setbordlist] = useState([]);
+
+  useEffect(() => {
+    const q = query(collection(db, "board"), orderBy("createAt", "desc"));
+    const unsub = onSnapshot(q, (doc) => {
+      const bordlist = doc.docs.map((doc) => {
+        return doc.data();
+      });
+      setbordlist(bordlist);
+    });
+  }, []);
+
   return (
     <div className="Board">
       <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
         공지사항
       </Typography>
+      {user !== null ? (
+        user.uid === "M0VoNwKO0wgNirAhXH1waovgJ1f2" ? (
+          <button
+            style={{ float: "right" }}
+            onClick={() => {
+              nav("/boardwrite");
+            }}
+          >
+            글쓰기
+          </button>
+        ) : (
+          <></>
+        )
+      ) : (
+        <></>
+      )}
+
       <Table size="small">
         <TableHead>
           <TableRow>
@@ -50,12 +86,14 @@ export default function Board() {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
-            <TableRow key={row.id}>
-              <TableCell>{row.id}</TableCell>
-              <TableCell>{row.name}</TableCell>
-              <TableCell>{row.shipTo}</TableCell>
-              <TableCell>{`$${row.amount}`}</TableCell>
+          {bordlist.map((doc, index) => (
+            <TableRow key={index}>
+              <TableCell>{bordlist.length - index}</TableCell>
+              <TableCell>{doc.title}</TableCell>
+              <TableCell>{doc.creator}</TableCell>
+              <TableCell>
+                {new Date(doc.createAt).toISOString().slice(0, 10)}
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Board from "../components/Board";
 import NavBar from "../components/NavBar";
@@ -8,8 +8,11 @@ import FileList from "../components/FileList";
 import { gaeonenameTable } from "../LongTermfilenameTable/gaeone";
 import { unyoungnameTable } from "../LongTermfilenameTable/unyoug";
 import { pyungganameTable } from "../LongTermfilenameTable/pyungga";
+import { userInfoContext } from "../App";
 
 const Home = () => {
+  const user = useContext(userInfoContext);
+
   const [whatFile, setwhatFile] = useState("개원"); // 어떤 서식인지 - 개원 / 운영 / 평가
   const [whatFilesname, setwhatFilesname] = useState("");
   const whatFileType = (type) => {
