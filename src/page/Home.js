@@ -8,10 +8,32 @@ import FileList from "../components/FileList";
 import { gaeonenameTable } from "../LongTermfilenameTable/gaeone";
 import { unyoungnameTable } from "../LongTermfilenameTable/unyoug";
 import { pyungganameTable } from "../LongTermfilenameTable/pyungga";
-import { userInfoContext } from "../App";
+import { gaeonenameTable2 } from "../DayCarefilenameTable/gaeone";
+import { unyoungnameTable2 } from "../DayCarefilenameTable/unyoug";
+import { pyungganameTable2 } from "../DayCarefilenameTable/pyungga";
+import { useLocation } from "react-router-dom";
 
 const Home = () => {
-  const user = useContext(userInfoContext);
+  const location = useLocation();
+  const [currentPath, setcurrentPath] = useState("");
+  const [isLongTerm, setisLongTerm] = useState();
+
+  // 컴포넌트가 마운트 될 때 현재 경로 가져오기
+  useEffect(() => {
+    setcurrentPath(location.pathname);
+  }, [location.pathname]);
+
+  // 컴포넌트가 마운트 될 때 요양원 페이지인지, 주간보호 페이지인지 판별
+  useEffect(() => {
+    if (currentPath === "/LongTerm") {
+      console.log("요양원1");
+      setisLongTerm(true);
+    } else if (currentPath === "/DayCare") {
+      setisLongTerm(false);
+    }
+  }, [currentPath]);
+
+  console.log(isLongTerm);
 
   const [whatFile, setwhatFile] = useState(
     localStorage.getItem("type") || "개원"
@@ -51,12 +73,12 @@ const Home = () => {
         <main>
           <Board />
           <Side
-            nameTable={gaeonenameTable}
+            nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
             whatFilesnameType={whatFilesnameType}
             whatFile={whatFile}
           />
           <FileList
-            nameTable={gaeonenameTable}
+            nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
             whatFilesname={whatFilesname}
             whatFile={whatFile}
           />
@@ -73,12 +95,12 @@ const Home = () => {
         <main>
           <Board />
           <Side
-            nameTable={unyoungnameTable}
+            nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
             whatFilesnameType={whatFilesnameType}
             whatFile={whatFile}
           />
           <FileList
-            nameTable={unyoungnameTable}
+            nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
             whatFilesname={whatFilesname}
             whatFile={whatFile}
           />
@@ -95,12 +117,12 @@ const Home = () => {
         <main>
           <Board />
           <Side
-            nameTable={pyungganameTable}
+            nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
             whatFilesnameType={whatFilesnameType}
             whatFile={whatFile}
           />
           <FileList
-            nameTable={pyungganameTable}
+            nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
             whatFilesname={whatFilesname}
             whatFile={whatFile}
           />
