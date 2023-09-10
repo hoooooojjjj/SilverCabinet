@@ -5,14 +5,13 @@
     float: left;
     width: 28vw;
     height: 100%;
-
 }
 .Side_title_div{
     display: flex;
   align-items: center; /* 세로 정렬을 수행합니다 */
   justify-content: center; /* 가로 정렬을 수행합니다 */
   width: 28vw;
-  height: 7vh;
+  height: 5vh;
   background-color: #B8E6E1;
 }
 
@@ -27,7 +26,7 @@
 .SideLeft {
     flex: 1; 
     width: 14vw;
-    height: 7vh;
+    height: 5vh;
     display: flex;
     flex-direction: column; 
     align-items: flex-start; 
@@ -37,7 +36,7 @@
     background-color: #f1f5f5;
     border-right: 1px solid #dbd4d4;
     width: 14vw;
-    height: 7vh;
+    height: 5vh;
 }
 .Side #Side_item:hover{
   background-color: #adbfbf;  
@@ -66,7 +65,8 @@
 #FileList{
      float: right;
      width: 63vw;
-      margin-right: 50px;
+     margin-right: 50px;
+     min-height: 48vh;
 }
 #FileList #FileList_item{
     cursor: pointer;

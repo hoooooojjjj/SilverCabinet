@@ -12,6 +12,7 @@ import { gaeonenameTable2 } from "../DayCarefilenameTable/gaeone";
 import { unyoungnameTable2 } from "../DayCarefilenameTable/unyoug";
 import { pyungganameTable2 } from "../DayCarefilenameTable/pyungga";
 import { useLocation } from "react-router-dom";
+import Footer from "../components/Footer";
 
 const Home = () => {
   const location = useLocation();
@@ -66,7 +67,7 @@ const Home = () => {
   };
   if (whatFile === "개원") {
     return (
-      <div>
+      <div className="Home">
         <header>
           <NavBar whatFileType={whatFileType} />
         </header>
@@ -83,12 +84,14 @@ const Home = () => {
             whatFile={whatFile}
           />
         </main>
-        <footer></footer>
+        <footer className="Home_footer">
+          <Footer />
+        </footer>
       </div>
     );
   } else if (whatFile === "운영") {
     return (
-      <div>
+      <div className="Home">
         <header>
           <NavBar whatFileType={whatFileType} />
         </header>
@@ -105,12 +108,14 @@ const Home = () => {
             whatFile={whatFile}
           />
         </main>
-        <footer></footer>
+        <footer className="Home_footer">
+          <Footer />
+        </footer>
       </div>
     );
   } else if (whatFile === "평가") {
     return (
-      <div>
+      <div className="Home">
         <header>
           <NavBar whatFileType={whatFileType} />
         </header>
@@ -127,7 +132,9 @@ const Home = () => {
             whatFile={whatFile}
           />
         </main>
-        <footer></footer>
+        <footer className="Home_footer">
+          <Footer />
+        </footer>
       </div>
     );
   }
