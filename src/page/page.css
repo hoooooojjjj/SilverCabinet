@@ -58,14 +58,21 @@
   /* Welcome */
 .Welcome_Card{
     display: flex;
-    justify-content: center;;
+    justify-content: center;
 }
+
 .Welcome #Welcome_btn{
     position: absolute;
     right: 15px;
     top : 10px;
+    background-color: #B8E6E1;
+    color : #333;
+    width : 10vw;
+    font-weight: bold;
+    
 }
   .Welcome h4{
     text-align: center;
     margin-top: 50px;
+    
   }

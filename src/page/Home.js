@@ -53,6 +53,7 @@ const Home = () => {
           <Side
             nameTable={gaeonenameTable}
             whatFilesnameType={whatFilesnameType}
+            whatFile={whatFile}
           />
           <FileList
             nameTable={gaeonenameTable}
@@ -74,6 +75,7 @@ const Home = () => {
           <Side
             nameTable={unyoungnameTable}
             whatFilesnameType={whatFilesnameType}
+            whatFile={whatFile}
           />
           <FileList
             nameTable={unyoungnameTable}
@@ -95,6 +97,7 @@ const Home = () => {
           <Side
             nameTable={pyungganameTable}
             whatFilesnameType={whatFilesnameType}
+            whatFile={whatFile}
           />
           <FileList
             nameTable={pyungganameTable}

@@ -13,8 +13,10 @@ function BasicExample({ titleText, text, path }) {
         ></img>
         <Card.Body>
           <div id="Card_text">
-            <Card.Title>{titleText}</Card.Title>
-            <Card.Text>{text}</Card.Text>
+            <Card.Title id="Card_title_text">
+              <strong>{titleText}</strong>
+            </Card.Title>
+            <Card.Text id="Card_nomal_text">{text}</Card.Text>
           </div>
         </Card.Body>
         <div className="text-center">
