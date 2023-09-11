@@ -61,6 +61,27 @@
     cursor: pointer;
     margin-right: 50px;
 }
+.Board #Board_pagination_div{
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+
+.Board #BoradCell{
+    width: 10vw;
+}
+.Board #BoradCell_num{
+    width: 2vw;
+}
+.Board #BoradCell_title{
+    width: 15vw;
+}
+.Board #Board_table{
+    height: 38vh;
+}
+.Board #Board_table_body{
+    height: 5.5vh;
+}
 /* FileList */
 #FileList{
      float: right;

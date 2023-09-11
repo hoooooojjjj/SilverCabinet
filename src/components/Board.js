@@ -5,6 +5,7 @@ import TableCell from "@mui/material/TableCell";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Typography from "@mui/material/Typography";
+import Pagination from "react-bootstrap/Pagination";
 import "./components.css";
 import { userInfoContext } from "../App";
 import { useNavigate } from "react-router-dom";
@@ -12,37 +13,13 @@ import { useNavigate } from "react-router-dom";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../Myfirebase";
 
-// Generate Order Data
-function createData(id, date, name, shipTo, paymentMethod, amount) {
-  return { id, date, name, shipTo, paymentMethod, amount };
-}
-
-const rows = [
-  createData(0, "Elvis Presley", "Tupelo, MS", "VISA ⠀•••• 3719", 312.44),
-  createData(1, "Paul McCartney", "London, UK", "VISA ⠀•••• 2574", 866.99),
-  createData(2, "Tom Scholz", "Boston, MA", "MC ⠀•••• 1253", 100.81),
-  createData(
-    3,
-    "16 Mar, 2019",
-    "Michael Jackson",
-    "Gary, IN",
-    "AMEX ⠀•••• 2000",
-    654.39
-  ),
-  createData(
-    4,
-    "15 Mar, 2019",
-    "Bruce Springsteen",
-    "Long Branch, NJ",
-    "VISA ⠀•••• 5919",
-    212.79
-  ),
-];
-
 export default function Board() {
   const user = useContext(userInfoContext);
   const nav = useNavigate();
   const [bordlist, setbordlist] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const [postsPerPage] = useState(5);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     const q = query(collection(db, "board"), orderBy("createAt", "desc"));
@@ -51,12 +28,39 @@ export default function Board() {
         return { ...doc.data(), id: doc.id };
       });
       setbordlist(bordlist);
+      setTotalPages(Math.ceil(bordlist.length / postsPerPage));
     });
-  }, []);
+  }, [postsPerPage]);
 
   const handleBoradClick = (doc) => {
     nav(`/boarddetail/${doc.id}`);
   };
+
+  const paginate = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const pageNumbers = [];
+  for (let number = 1; number <= totalPages; number++) {
+    pageNumbers.push(number);
+  }
+
+  const maxPageItems = 5;
+  const indexOfLastPost = currentPage * postsPerPage;
+  const indexOfFirstPost = indexOfLastPost - postsPerPage;
+  const currentPosts = bordlist.slice(indexOfFirstPost, indexOfLastPost);
+
+  // 이전 페이지와 다음 페이지 버튼을 표시할지 여부를 계산
+  const canShowPreviousButton = currentPage > 1;
+  const canShowNextButton = currentPage < totalPages;
+
+  // 페이지네이션 그룹의 첫 번째 페이지 번호 계산
+  const firstPageInGroup = Math.max(1, currentPage - 2);
+  // 페이지네이션 그룹의 마지막 페이지 번호 계산
+  const lastPageInGroup = Math.min(
+    totalPages,
+    firstPageInGroup + maxPageItems - 1
+  );
 
   return (
     <div className="Board">
@@ -79,34 +83,59 @@ export default function Board() {
       ) : (
         <></>
       )}
-
-      <Table size="small">
-        <TableHead>
-          <TableRow>
-            <TableCell>순번</TableCell>
-            <TableCell>제목</TableCell>
-            <TableCell>작성자</TableCell>
-            <TableCell>등록날짜</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {bordlist.map((doc, index) => (
-            <TableRow
-              onClick={() => {
-                handleBoradClick(doc);
-              }}
-              key={index}
-            >
-              <TableCell>{bordlist.length - index}</TableCell>
-              <TableCell>{doc.title}</TableCell>
-              <TableCell>{doc.creator}</TableCell>
-              <TableCell>
-                {new Date(doc.createAt).toISOString().slice(0, 10)}
-              </TableCell>
+      <div id="Board_table">
+        <Table size="small">
+          <TableHead>
+            <TableRow>
+              <TableCell id="BoradCell_num">순번</TableCell>
+              <TableCell id="BoradCell_title">제목</TableCell>
+              <TableCell id="BoradCell">작성자</TableCell>
+              <TableCell id="BoradCell">등록날짜</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
+          </TableHead>
+          <TableBody>
+            {currentPosts.map((doc, index) => (
+              <TableRow
+                id="Board_table_body"
+                onClick={() => {
+                  handleBoradClick(doc);
+                }}
+                key={index}
+              >
+                <TableCell>
+                  {bordlist.length - indexOfLastPost - index + 5}
+                </TableCell>
+                <TableCell>{doc.title}</TableCell>
+                <TableCell>{doc.creator}</TableCell>
+                <TableCell>
+                  {new Date(doc.createAt).toISOString().slice(0, 10)}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </div>
+      <div>
+        <Pagination id="Board_pagination_div">
+          {canShowPreviousButton && (
+            <Pagination.Prev onClick={() => paginate(currentPage - 1)} />
+          )}
+          {pageNumbers
+            .slice(firstPageInGroup - 1, lastPageInGroup)
+            .map((pageNumber) => (
+              <Pagination.Item
+                key={pageNumber}
+                active={pageNumber === currentPage}
+                onClick={() => paginate(pageNumber)}
+              >
+                {pageNumber}
+              </Pagination.Item>
+            ))}
+          {canShowNextButton && (
+            <Pagination.Next onClick={() => paginate(currentPage + 1)} />
+          )}
+        </Pagination>
+      </div>
     </div>
   );
 }
