@@ -64,7 +64,6 @@
 .Board #Board_pagination_div{
     display: flex;
     justify-content: center;
-    margin-top: 15px;
 }
 
 .Board #BoradCell{
@@ -87,7 +86,7 @@
      float: right;
      width: 63vw;
      margin-right: 50px;
-     min-height: 48vh;
+     min-height: 50vh;
 }
 #FileList #FileList_item{
     cursor: pointer;
