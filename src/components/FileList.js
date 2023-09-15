@@ -27,6 +27,9 @@ export default function InteractiveList({
   const [fileNames, setFileNames] = useState([]);
   const [filename, setFileName] = useState(localStorage.getItem("file") || "");
 
+  const [search, setsearch] = useState("");
+  const [filteredFileNames, setFilteredFileNames] = useState([]);
+
   // 컴포넌트가 언마운트될 때 마지막으로 선택한 걸 저장 후 다시 마운트 됐을 때 저장된 거 보여주기
   useEffect(() => {
     return () => {
@@ -57,6 +60,19 @@ export default function InteractiveList({
     });
   }, [whatFilesname, whatFile]);
 
+  useEffect(() => {
+    if (search) {
+      const searchNormalized = search.normalize("NFC"); // 검색어를 정규화
+      const filteredNames = fileNames.filter((file) => {
+        const fileNormalized = file.normalize("NFC"); // 파일 이름을 정규화
+        return fileNormalized.includes(searchNormalized);
+      });
+      setFilteredFileNames(filteredNames); // 필터링된 파일 이름을 상태로 저장
+    } else {
+      setFilteredFileNames(fileNames); // 검색어가 없으면 전체 파일 이름 표시
+    }
+  }, [search, fileNames]); // search와 fileNames 상태를 모두 감시
+
   const [dense, setDense] = React.useState(false);
   return (
     <Box id="FileList">
@@ -64,9 +80,17 @@ export default function InteractiveList({
         <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
           {whatFile} {`${filename}`}
         </Typography>
+        <input
+          type="text"
+          placeholder="검색어를 입력해주세요"
+          value={search}
+          onChange={(e) => {
+            setsearch(e.target.value);
+          }}
+        />
         <Demo>
           <List dense={dense}>
-            {fileNames.map((filenames, index) => (
+            {filteredFileNames.map((filenames, index) => (
               <ListItem
                 key={index}
                 id="FileList_item"

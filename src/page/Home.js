@@ -27,14 +27,11 @@ const Home = () => {
   // 컴포넌트가 마운트 될 때 요양원 페이지인지, 주간보호 페이지인지 판별
   useEffect(() => {
     if (currentPath === "/LongTerm") {
-      console.log("요양원1");
       setisLongTerm(true);
     } else if (currentPath === "/DayCare") {
       setisLongTerm(false);
     }
   }, [currentPath]);
-
-  console.log(isLongTerm);
 
   const [whatFile, setwhatFile] = useState(
     localStorage.getItem("type") || "개원"
