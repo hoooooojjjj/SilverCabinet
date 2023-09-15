@@ -8,6 +8,7 @@ import ListItemText from "@mui/material/ListItemText";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import FolderIcon from "@mui/icons-material/Folder";
+import Form from "react-bootstrap/Form";
 import "./components.css";
 import { storage } from "../Myfirebase";
 import { ref, listAll } from "firebase/storage";
@@ -80,14 +81,26 @@ export default function InteractiveList({
         <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
           {whatFile} {`${filename}`}
         </Typography>
-        <input
-          type="text"
-          placeholder="검색어를 입력해주세요"
-          value={search}
-          onChange={(e) => {
-            setsearch(e.target.value);
-          }}
-        />
+        {filteredFileNames && (
+          <Form
+            onSubmit={(e) => {
+              e.preventDefault();
+            }}
+          >
+            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+              <Form.Label>파일 검색하기</Form.Label>
+              <Form.Control
+                type="text"
+                className="FileList_search"
+                placeholder="검색어를 입력해주세요"
+                value={search}
+                onChange={(e) => {
+                  setsearch(e.target.value);
+                }}
+              />
+            </Form.Group>
+          </Form>
+        )}
         <Demo>
           <List dense={dense}>
             {filteredFileNames.map((filenames, index) => (

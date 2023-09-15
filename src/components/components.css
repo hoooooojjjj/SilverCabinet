@@ -91,6 +91,12 @@
 #FileList #FileList_item{
     cursor: pointer;
 }
+#FileList #FileList_item:hover{
+    background-color: #ececec;
+}
+#FileList .FileList_search{
+    width: 63vw;
+}
 
 /*  Card */
 .Card{
