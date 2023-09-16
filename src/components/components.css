@@ -143,6 +143,9 @@
     text-decoration:  none;
     color: black;
 }
+.NavBar .NavBar_home{
+    margin-top :7px;
+}
 /* FileList */
 
 

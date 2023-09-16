@@ -18,6 +18,7 @@ const Home = () => {
   const location = useLocation();
   const [currentPath, setcurrentPath] = useState("");
   const [isLongTerm, setisLongTerm] = useState();
+  const [isToggle, setisToggle] = useState(true);
 
   // 컴포넌트가 마운트 될 때 현재 경로 가져오기
   useEffect(() => {
@@ -66,7 +67,7 @@ const Home = () => {
     return (
       <div className="Home">
         <header>
-          <NavBar whatFileType={whatFileType} />
+          <NavBar whatFileType={whatFileType} isToggle={isToggle} />
         </header>
         <main>
           <Board />
@@ -90,7 +91,7 @@ const Home = () => {
     return (
       <div className="Home">
         <header>
-          <NavBar whatFileType={whatFileType} />
+          <NavBar whatFileType={whatFileType} isToggle={isToggle} />
         </header>
         <main>
           <Board />
@@ -114,7 +115,7 @@ const Home = () => {
     return (
       <div className="Home">
         <header>
-          <NavBar whatFileType={whatFileType} />
+          <NavBar whatFileType={whatFileType} isToggle={isToggle} />
         </header>
         <main>
           <Board />
@@ -129,7 +130,7 @@ const Home = () => {
             whatFile={whatFile}
           />
         </main>
-        <footer className="Home_footer">
+        <footer>
           <Footer />
         </footer>
       </div>
