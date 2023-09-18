@@ -1,6 +1,7 @@
 /* BoardDetail */
 .BoardDetail {
     margin: 20px;
+    min-height: 76vh;
 }
 
 .BoardDetail h2{
@@ -53,6 +54,10 @@
     width: 20vw;
     height: 7vh;
     font-weight: bold;
+  }
+  .FileDown_btn{
+    margin-bottom: 20px;
+    min-height: 43vh;
   }
 
   /* Welcome */

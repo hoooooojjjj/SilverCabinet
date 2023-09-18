@@ -59,6 +59,15 @@ function NavBar({ whatFileType, isToggle }) {
                       평가 서식
                     </NavDropdown.Item>
                   </NavDropdown>
+                  <NavDropdown
+                    style={{ fontSize: 20 }}
+                    title="소개"
+                    id="basic-nav-dropdown"
+                  >
+                    <NavDropdown.Item>대표 소개</NavDropdown.Item>
+                    <NavDropdown.Item>회사 소개</NavDropdown.Item>
+                    <NavDropdown.Item>사이트 소개</NavDropdown.Item>
+                  </NavDropdown>
                 </Nav>
               </Navbar.Collapse>
             </>
