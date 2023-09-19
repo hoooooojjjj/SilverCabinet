@@ -78,6 +78,9 @@
 .Board #Board_table{
     height: 38vh;
 }
+.Board #Board_table_body:hover{
+    background-color: #ececec;
+}
 .Board #Board_table_body{
     height: 5.5vh;
 }
