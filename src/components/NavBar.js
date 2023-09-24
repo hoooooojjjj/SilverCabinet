@@ -64,9 +64,9 @@ function NavBar({ whatFileType, isToggle }) {
                     title="소개"
                     id="basic-nav-dropdown"
                   >
-                    <NavDropdown.Item>대표 소개</NavDropdown.Item>
-                    <NavDropdown.Item>회사 소개</NavDropdown.Item>
-                    <NavDropdown.Item>사이트 소개</NavDropdown.Item>
+                    <Link to={"/intro"}>대표 소개</Link>
+                    <Link to={"/intro"}>회사 소개</Link>
+                    <Link to={"/intro"}>사이트 소개</Link>
                   </NavDropdown>
                 </Nav>
               </Navbar.Collapse>

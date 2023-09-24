@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 import Home from "./page/Home";
@@ -8,6 +8,7 @@ import Signup from "./page/SignUp";
 import BoardWrite from "./page/BoardWrite";
 import BoardDetail from "./page/BoardDetail";
 import FileDetail from "./page/FileDetail";
+import Intro from "./page/intro";
 
 const AppRouter = () => {
   return (
@@ -22,6 +23,7 @@ const AppRouter = () => {
           <Route path="/boardwrite" element={<BoardWrite />}></Route>
           <Route path="/boarddetail/:id" element={<BoardDetail />}></Route>
           <Route path="/filedetail/?" element={<FileDetail />}></Route>
+          <Route path="/intro" element={<Intro />}></Route>
         </Routes>
       </BrowserRouter>
     </div>
