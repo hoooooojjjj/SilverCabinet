@@ -33,7 +33,7 @@ const BoardDetail = () => {
           </div>
           <Button
             onClick={() => {
-              nav("/LongTerm");
+              nav(-1);
             }}
             variant="contained"
           >

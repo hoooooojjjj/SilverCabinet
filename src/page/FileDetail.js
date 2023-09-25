@@ -63,7 +63,7 @@ const FileDetail = () => {
             <Button
               id="FileDown_btn2"
               onClick={() => {
-                nav("/LongTerm");
+                nav(-1);
               }}
               variant="contained"
             >
