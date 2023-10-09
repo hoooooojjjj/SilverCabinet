@@ -93,3 +93,48 @@
   background-color: red;
 
 }
+
+/* Login */
+.Login{
+  display: flex;
+  width: 100%;
+}
+.Login img{
+  float: left;
+  width: 65vw;
+  height: 100vh;
+}
+.Login .Login_right_wrap{
+  float: right;
+}
+.Login .Login_right{
+  width: 35vw;
+  height: 100vh;
+  background-color: rgb(208, 202, 202);
+}
+.Login #login{
+  border-radius: 25px;
+  height: 50px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #B8E6E1;
+  color: #333;
+}
+.Login .google_login{
+  width: 250px;
+  height: 60px;
+  margin-bottom: 10px;
+}
+.Login .social_text{
+  margin-top: 20px;
+}
+.Login .logo{
+  margin-top: 20px;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 20px;
+}
+.Login .signup_span{
+  text-decoration: none !important;
+  color: black;
+}

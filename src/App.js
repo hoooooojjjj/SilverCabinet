@@ -14,16 +14,19 @@ export const userInfoContext = React.createContext(); // 유저 정보 context
 function App() {
   const [islogin, setislogin] = useState(false); // 로그인 유무
   const [userObj, setuserObj] = useState(null); // 유저 정보
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
         // 로그인 된 경우
+        setIsLoading(false);
         setuserObj(user); // 유저 정보
         setislogin(true);
         // ...
       } else {
         // 로그아웃 된 경우
+        setIsLoading(false);
         setislogin(false);
       }
     });
@@ -37,7 +40,7 @@ function App() {
     <div className="App">
       <userIsLoginContext.Provider value={islogin}>
         <userInfoContext.Provider value={userObj}>
-          <AppRouter />
+          <AppRouter isLoading={isLoading} />
         </userInfoContext.Provider>
       </userIsLoginContext.Provider>
     </div>

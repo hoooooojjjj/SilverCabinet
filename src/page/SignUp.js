@@ -1,7 +1,5 @@
 import React, { useState } from "react";
-import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import {
-  Avatar,
   Typography,
   TextField,
   Button,
@@ -59,7 +57,7 @@ export default function Signup() {
           user.displayName = signUp.displayName;
           console.log(userCredential);
           alert("회원가입이 완료되었습니다");
-          navigate("/signin");
+          navigate("/");
         })
         .catch((error) => {
           const errorMessage = error.message;
@@ -72,15 +70,18 @@ export default function Signup() {
     <Container component="main" maxWidth="xs">
       <Box
         sx={{
-          marginTop: 8,
+          marginTop: 6,
           display: "flex",
           flexDirection: "column",
           alignItems: "center",
         }}
       >
-        <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-          <LockOutlinedIcon />
-        </Avatar>
+        <img
+          src={process.env.PUBLIC_URL + "/assets/Logo.jpg"}
+          alt="로고"
+          className="logo"
+          style={{ width: 100, height: 100, marginBottom: 20 }}
+        ></img>
         <Typography component="h1" variant="h5">
           회원가입
         </Typography>
@@ -155,8 +156,8 @@ export default function Signup() {
         </Box>
         <Grid container>
           <Grid item>
-            <Link style={{ marginLeft: 180 }} to="/signin">
-              로그인
+            <Link style={{ marginLeft: 150, color: "black" }} to="/">
+              로그인하러가기
             </Link>
           </Grid>
         </Grid>
