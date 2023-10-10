@@ -64,7 +64,7 @@ export default function Board() {
 
   return (
     <div className="Board">
-      <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+      <Typography sx={{ mt: 1, mb: 0 }} variant="h6" component="div">
         공지사항
       </Typography>
       {user !== null ? (

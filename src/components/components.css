@@ -89,7 +89,8 @@
      float: right;
      width: 63vw;
      margin-right: 50px;
-     min-height: 50vh;
+     min-height: 60vh;
+     margin-bottom: 20px;
 }
 #FileList #FileList_item{
     cursor: pointer;

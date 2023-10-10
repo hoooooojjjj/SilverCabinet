@@ -12,7 +12,7 @@ import Form from "react-bootstrap/Form";
 import "./components.css";
 import { storage } from "../Myfirebase";
 import { ref, listAll } from "firebase/storage";
-import { useNavigate } from "react-router-dom";
+import { json, useNavigate } from "react-router-dom";
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -35,13 +35,14 @@ export default function InteractiveList({
   useEffect(() => {
     return () => {
       localStorage.setItem("file", filename);
+      localStorage.setItem("files", JSON.stringify(fileNames));
     };
   });
 
   useEffect(() => {
     // 서식 변경 할때 초기화
-    setFileName("");
-    setFileNames([]);
+    setFileName(localStorage.getItem("file") || "");
+    setFileNames(JSON.parse(localStorage.getItem("files")) || "");
 
     nameTable.map((name) => {
       // 파일을 side에서 선택하면 그 파일로 리렌더링
@@ -78,28 +79,33 @@ export default function InteractiveList({
   return (
     <Box id="FileList">
       <Grid item xs={12} md={6}>
-        <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-          {whatFile} {`${filename}`}
-        </Typography>
         {filteredFileNames && (
-          <Form
-            onSubmit={(e) => {
-              e.preventDefault();
-            }}
-          >
-            <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
-              <Form.Label>파일 검색하기</Form.Label>
-              <Form.Control
-                type="text"
-                className="FileList_search"
-                placeholder="검색어를 입력해주세요"
-                value={search}
-                onChange={(e) => {
-                  setsearch(e.target.value);
-                }}
-              />
-            </Form.Group>
-          </Form>
+          <>
+            <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
+              {whatFile} {`${filename}`}
+            </Typography>
+            <Form
+              onSubmit={(e) => {
+                e.preventDefault();
+              }}
+            >
+              <Form.Group
+                className="mb-3"
+                controlId="exampleForm.ControlInput1"
+              >
+                <Form.Label>파일 검색하기</Form.Label>
+                <Form.Control
+                  type="text"
+                  className="FileList_search"
+                  placeholder="검색어를 입력해주세요"
+                  value={search}
+                  onChange={(e) => {
+                    setsearch(e.target.value);
+                  }}
+                />
+              </Form.Group>
+            </Form>
+          </>
         )}
         <Demo>
           <List dense={dense}>
