@@ -1,10 +1,15 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import Card from "../components/Card";
 import Button from "@mui/material/Button";
 import { userIsLoginContext } from "../App";
 import { signOut } from "firebase/auth";
 import { auth } from "../Myfirebase";
 const Welcome = () => {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
+
   const islogin = useContext(userIsLoginContext);
   return (
     <div className="Welcome">

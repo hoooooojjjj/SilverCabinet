@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   TextField,
@@ -14,6 +14,11 @@ import { auth } from "../Myfirebase";
 import { sendPasswordResetEmail } from "firebase/auth";
 
 export default function Signup() {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
+
   // 이메일 입력
   const [email, setEmail] = useState("");
 

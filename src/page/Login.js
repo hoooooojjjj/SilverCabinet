@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -9,6 +9,10 @@ import {
 import { auth } from "../Myfirebase";
 
 export const Login = () => {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
   const nav = useNavigate();
   const [signUp, setsignUp] = useState({
     email: "",

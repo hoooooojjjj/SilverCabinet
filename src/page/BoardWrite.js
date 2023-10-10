@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import Form from "react-bootstrap/Form";
 
 import { collection, addDoc } from "firebase/firestore";
@@ -7,6 +7,10 @@ import { userInfoContext } from "../App";
 import { useNavigate } from "react-router-dom";
 
 const BoardWrite = () => {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
   const nav = useNavigate();
 
   const user = useContext(userInfoContext);

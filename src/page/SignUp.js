@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Typography,
   TextField,
@@ -14,6 +14,11 @@ import { createUserWithEmailAndPassword } from "firebase/auth";
 import { auth } from "../Myfirebase";
 
 export default function Signup() {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
+
   const navigate = useNavigate();
 
   const [rePwValid, setRePwValid] = useState(null); // 비밀번호 일치 여부

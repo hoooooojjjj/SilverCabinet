@@ -121,9 +121,14 @@
   color: #333;
 }
 .Login .google_login{
-  width: 250px;
-  height: 60px;
+  width: 280px;
+  height: 50px;
   margin-bottom: 10px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+}
+.Login .google_login:hover{
+  box-shadow: 6px 6px 8px rgba(0, 0, 0, 0.277);
 }
 .Login .social_text{
   margin-top: 20px;
@@ -133,8 +138,4 @@
   width: 100px;
   height: 100px;
   margin-bottom: 20px;
-}
-.Login .signup_span{
-  text-decoration: none !important;
-  color: black;
 }

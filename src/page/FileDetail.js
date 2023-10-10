@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ref, getDownloadURL } from "firebase/storage";
 import { storage } from "../Myfirebase";
 import { useNavigate, useSearchParams } from "react-router-dom";
@@ -8,6 +8,10 @@ import Button from "@mui/material/Button";
 import Footer from "../components/Footer";
 
 const FileDetail = () => {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
   // query stirng -> ?키=값&키=값&키=값....
   const [searchParams, setsearchParams] = useSearchParams();
   const fileType = searchParams.get("fileType"); // searchParams는 키를 매개변수로 보내 전달받은 값을 사용할 수 있음

@@ -7,6 +7,10 @@ import Navbar from "../components/NavBar";
 import Button from "@mui/material/Button";
 import Footer from "../components/Footer";
 const BoardDetail = () => {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
   const [boradDetail, setboradDetail] = useState({});
 
   const nav = useNavigate();

@@ -7,7 +7,7 @@ import Signup from "./page/SignUp";
 import BoardWrite from "./page/BoardWrite";
 import BoardDetail from "./page/BoardDetail";
 import FileDetail from "./page/FileDetail";
-import Intro from "./page/intro";
+import Intro from "./page/Intro";
 import FindPassword from "./page/FindPassword";
 import { Loading } from "./components/Loading";
 import { userIsLoginContext } from "./App";

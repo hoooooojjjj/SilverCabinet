@@ -15,6 +15,11 @@ import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Home = () => {
+  useEffect(() => {
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+  });
+
   const location = useLocation();
   const [currentPath, setcurrentPath] = useState("");
   const [isLongTerm, setisLongTerm] = useState();
