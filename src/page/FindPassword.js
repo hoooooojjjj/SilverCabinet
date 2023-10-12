@@ -26,10 +26,10 @@ export default function Signup() {
   const findPassword = () => {
     sendPasswordResetEmail(auth, email)
       .then(() => {
-        alert("비밀번호 재설정 메일이 발송되었습니다");
+        alert("비밀번호 재설정 메일이 발송되었습니다.");
       })
       .catch((error) => {
-        alert(error);
+        alert("해당 이메일로 가입된 계정이 없습니다.");
       });
   };
 

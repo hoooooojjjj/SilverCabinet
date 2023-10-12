@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { TextField, Button, Box, Container } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 import {
@@ -13,7 +13,13 @@ export const Login = () => {
     const title = document.getElementsByTagName("title")[0];
     title.innerHTML = "실버캐비넷";
   });
+
   const nav = useNavigate();
+
+  // 로그인 인풋 요소 가져오기
+  const email = useRef();
+  const password = useRef();
+
   const [signUp, setsignUp] = useState({
     email: "",
     password: "",
@@ -34,7 +40,9 @@ export const Login = () => {
         // Signed in
         nav("/");
       })
-      .catch((error) => {});
+      .catch((error) => {
+        alert("이메일과 비밀번호를 다시 확인해주세요");
+      });
   };
 
   // 구글 로그인
@@ -44,7 +52,7 @@ export const Login = () => {
       .then((result) => {
         nav("/");
       })
-      .catch((error) => {});
+      .catch((error) => alert(error));
   };
   return (
     <div className="Login">
@@ -77,6 +85,7 @@ export const Login = () => {
                 autoFocus
                 value={signUp.email}
                 onChange={handleChange}
+                ref={email}
               />
               <TextField
                 margin="normal"
@@ -88,6 +97,7 @@ export const Login = () => {
                 autoComplete="current-password"
                 value={signUp.password}
                 onChange={handleChange}
+                ref={password}
               />
               <Button
                 type="submit"

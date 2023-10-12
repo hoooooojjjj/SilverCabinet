@@ -98,7 +98,7 @@ export default function Signup() {
                 required
                 fullWidth
                 id="id"
-                label="이메일"
+                label="이메일(이메일 형식을 지켜주세요)"
                 name="email"
                 autoComplete="id"
                 size="small"
@@ -111,7 +111,7 @@ export default function Signup() {
                 required
                 fullWidth
                 name="password"
-                label="비밀번호"
+                label="비밀번호(6자리 이상)"
                 type="password"
                 id="password"
                 autoComplete="new-password"
