@@ -71,22 +71,24 @@ const Home = () => {
   if (whatFile === "개원") {
     return (
       <div className="Home">
-        <header>
-          <NavBar whatFileType={whatFileType} isToggle={isToggle} />
-        </header>
-        <main>
-          <Board />
-          <Side
-            nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
-            whatFilesnameType={whatFilesnameType}
-            whatFile={whatFile}
-          />
-          <FileList
-            nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
-            whatFilesname={whatFilesname}
-            whatFile={whatFile}
-          />
-        </main>
+        <div className="not_footer">
+          <header>
+            <NavBar whatFileType={whatFileType} isToggle={isToggle} />
+          </header>
+          <main>
+            <Board />
+            <Side
+              nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
+              whatFilesnameType={whatFilesnameType}
+              whatFile={whatFile}
+            />
+            <FileList
+              nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
+              whatFilesname={whatFilesname}
+              whatFile={whatFile}
+            />
+          </main>
+        </div>
         <footer className="Home_footer">
           <Footer />
         </footer>
@@ -95,22 +97,24 @@ const Home = () => {
   } else if (whatFile === "운영") {
     return (
       <div className="Home">
-        <header>
-          <NavBar whatFileType={whatFileType} isToggle={isToggle} />
-        </header>
-        <main>
-          <Board />
-          <Side
-            nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
-            whatFilesnameType={whatFilesnameType}
-            whatFile={whatFile}
-          />
-          <FileList
-            nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
-            whatFilesname={whatFilesname}
-            whatFile={whatFile}
-          />
-        </main>
+        <div className="not_footer">
+          <header>
+            <NavBar whatFileType={whatFileType} isToggle={isToggle} />
+          </header>
+          <main>
+            <Board />
+            <Side
+              nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
+              whatFilesnameType={whatFilesnameType}
+              whatFile={whatFile}
+            />
+            <FileList
+              nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
+              whatFilesname={whatFilesname}
+              whatFile={whatFile}
+            />
+          </main>
+        </div>
         <footer className="Home_footer">
           <Footer />
         </footer>
@@ -119,22 +123,24 @@ const Home = () => {
   } else if (whatFile === "평가") {
     return (
       <div className="Home">
-        <header>
-          <NavBar whatFileType={whatFileType} isToggle={isToggle} />
-        </header>
-        <main>
-          <Board />
-          <Side
-            nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
-            whatFilesnameType={whatFilesnameType}
-            whatFile={whatFile}
-          />
-          <FileList
-            nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
-            whatFilesname={whatFilesname}
-            whatFile={whatFile}
-          />
-        </main>
+        <div className="not_footer">
+          <header>
+            <NavBar whatFileType={whatFileType} isToggle={isToggle} />
+          </header>
+          <main>
+            <Board />
+            <Side
+              nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
+              whatFilesnameType={whatFilesnameType}
+              whatFile={whatFile}
+            />
+            <FileList
+              nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
+              whatFilesname={whatFilesname}
+              whatFile={whatFile}
+            />
+          </main>
+        </div>
         <footer>
           <Footer />
         </footer>

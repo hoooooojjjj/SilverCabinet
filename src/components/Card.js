@@ -11,7 +11,7 @@ function BasicExample({ titleText, text, path }) {
           src={process.env.PUBLIC_URL + "/assets/Logo_text.jpg"}
           alt="로고"
         ></img>
-        <Card.Body>
+        <Card.Body style={{ height: 100 }}>
           <div id="Card_text">
             <Card.Title id="Card_title_text">
               <strong>{titleText}</strong>

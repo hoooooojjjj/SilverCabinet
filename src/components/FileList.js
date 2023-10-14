@@ -12,7 +12,7 @@ import Form from "react-bootstrap/Form";
 import "./components.css";
 import { storage } from "../Myfirebase";
 import { ref, listAll } from "firebase/storage";
-import { json, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 const Demo = styled("div")(({ theme }) => ({
   backgroundColor: theme.palette.background.paper,
@@ -42,7 +42,7 @@ export default function InteractiveList({
   useEffect(() => {
     // 서식 변경 할때 초기화
     setFileName(localStorage.getItem("file") || "");
-    setFileNames(JSON.parse(localStorage.getItem("files")) || "");
+    setFileNames(JSON.parse(localStorage.getItem("files")) || []);
 
     nameTable.map((name) => {
       // 파일을 side에서 선택하면 그 파일로 리렌더링
@@ -60,7 +60,7 @@ export default function InteractiveList({
           });
       }
     });
-  }, [whatFilesname, whatFile]);
+  }, [whatFilesname, whatFile, nameTable]);
 
   useEffect(() => {
     if (search) {

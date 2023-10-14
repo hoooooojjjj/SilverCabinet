@@ -22,33 +22,35 @@ const BoardDetail = () => {
   }, []);
   const { id } = useParams();
   return (
-    <>
-      <header>
-        <Navbar />
-      </header>
-      <main>
-        <div className="BoardDetail">
-          <h2>공지사항</h2>
-          <div className="BoardDetail_content">
-            <br />
-            <h6>제목 : {boradDetail.title}</h6>
-            <h6> 작성자 : {boradDetail.creator}</h6>
-            <p>{boradDetail.content}</p>
+    <div>
+      <div className="not_footer">
+        <header>
+          <Navbar />
+        </header>
+        <main>
+          <div className="BoardDetail">
+            <h2>공지사항</h2>
+            <div className="BoardDetail_content">
+              <br />
+              <h6>제목 : {boradDetail.title}</h6>
+              <h6> 작성자 : {boradDetail.creator}</h6>
+              <p>{boradDetail.content}</p>
+            </div>
+            <Button
+              onClick={() => {
+                nav(-1);
+              }}
+              variant="contained"
+            >
+              뒤로가기
+            </Button>
           </div>
-          <Button
-            onClick={() => {
-              nav(-1);
-            }}
-            variant="contained"
-          >
-            뒤로가기
-          </Button>
-        </div>
-      </main>
+        </main>
+      </div>
       <footer>
         <Footer />
       </footer>
-    </>
+    </div>
   );
 };
 
