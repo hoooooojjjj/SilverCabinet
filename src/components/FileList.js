@@ -82,7 +82,7 @@ export default function InteractiveList({
         {filteredFileNames && (
           <>
             <Typography sx={{ mt: 4, mb: 2 }} variant="h6" component="div">
-              {whatFile} {`${filename}`}
+              {whatFile}
             </Typography>
             <Form
               onSubmit={(e) => {

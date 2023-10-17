@@ -4,26 +4,36 @@ import Board from "../components/Board";
 import NavBar from "../components/NavBar";
 import Side from "../components/Side";
 import FileList from "../components/FileList";
+import { doc, getDoc } from "firebase/firestore";
+import { db } from "../Myfirebase";
 
-import { gaeonenameTable } from "../LongTermfilenameTable/gaeone";
-import { unyoungnameTable } from "../LongTermfilenameTable/unyoug";
-import { pyungganameTable } from "../LongTermfilenameTable/pyungga";
-import { gaeonenameTable2 } from "../DayCarefilenameTable/gaeone";
-import { unyoungnameTable2 } from "../DayCarefilenameTable/unyoug";
-import { pyungganameTable2 } from "../DayCarefilenameTable/pyungga";
 import { useLocation } from "react-router-dom";
 import Footer from "../components/Footer";
 
 const Home = () => {
-  useEffect(() => {
-    const title = document.getElementsByTagName("title")[0];
-    title.innerHTML = "실버캐비넷";
-  });
-
   const location = useLocation();
   const [currentPath, setcurrentPath] = useState("");
   const [isLongTerm, setisLongTerm] = useState();
   const [isToggle, setisToggle] = useState(true);
+
+  // 요양원 개원 서식 파일 가져오기
+  const [nameTable, setnameTable] = useState([]);
+
+  const getData = async (collection, doc1) => {
+    const docs = await getDoc(doc(db, collection, doc1));
+    setnameTable(docs.data()["file"]);
+  };
+
+  useEffect(() => {
+    // title 변경
+    const title = document.getElementsByTagName("title")[0];
+    title.innerHTML = "실버캐비넷";
+
+    // 이전 저장된 데이터 보여주기
+    isLongTerm
+      ? getData("LongTermfilenameTable", localStorage.getItem("type") || "개원")
+      : getData("DayCarefilenameTable", localStorage.getItem("type") || "개원");
+  }, [isLongTerm]);
 
   // 컴포넌트가 마운트 될 때 현재 경로 가져오기
   useEffect(() => {
@@ -54,21 +64,33 @@ const Home = () => {
   });
 
   // useCallback 으로 최적화
-  const whatFileType = useCallback((type) => {
-    switch (type) {
-      case "개원":
-        setwhatFile((whatFile) => "개원");
-        break;
-      case "운영":
-        setwhatFile((whatFile) => "운영");
-        break;
-      case "평가":
-        setwhatFile((whatFile) => "평가");
-        break;
-      default:
-        break;
-    }
-  }, []);
+  const whatFileType = useCallback(
+    (type) => {
+      switch (type) {
+        case "개원":
+          setwhatFile((whatFile) => "개원");
+          isLongTerm
+            ? getData("LongTermfilenameTable", "개원")
+            : getData("DayCarefilenameTable", "개원");
+          break;
+        case "운영":
+          setwhatFile((whatFile) => "운영");
+          isLongTerm
+            ? getData("LongTermfilenameTable", "운영")
+            : getData("DayCarefilenameTable", "운영");
+          break;
+        case "평가":
+          setwhatFile((whatFile) => "평가");
+          isLongTerm
+            ? getData("LongTermfilenameTable", "평가")
+            : getData("DayCarefilenameTable", "평가");
+          break;
+        default:
+          break;
+      }
+    },
+    [isLongTerm]
+  );
 
   // useCallback 으로 최적화
   const whatFilesnameType = useCallback((type) => {
@@ -85,12 +107,12 @@ const Home = () => {
           <main>
             <Board />
             <Side
-              nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
+              nameTable={nameTable}
               whatFilesnameType={whatFilesnameType}
               whatFile={whatFile}
             />
             <FileList
-              nameTable={isLongTerm ? gaeonenameTable : gaeonenameTable2}
+              nameTable={nameTable}
               whatFilesname={whatFilesname}
               whatFile={whatFile}
             />
@@ -111,12 +133,12 @@ const Home = () => {
           <main>
             <Board />
             <Side
-              nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
+              nameTable={nameTable}
               whatFilesnameType={whatFilesnameType}
               whatFile={whatFile}
             />
             <FileList
-              nameTable={isLongTerm ? unyoungnameTable : unyoungnameTable2}
+              nameTable={nameTable}
               whatFilesname={whatFilesname}
               whatFile={whatFile}
             />
@@ -137,12 +159,12 @@ const Home = () => {
           <main>
             <Board />
             <Side
-              nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
+              nameTable={nameTable}
               whatFilesnameType={whatFilesnameType}
               whatFile={whatFile}
             />
             <FileList
-              nameTable={isLongTerm ? pyungganameTable : pyungganameTable2}
+              nameTable={nameTable}
               whatFilesname={whatFilesname}
               whatFile={whatFile}
             />
