@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Board from "../components/Board";
 import NavBar from "../components/NavBar";
@@ -42,6 +42,8 @@ const Home = () => {
   const [whatFile, setwhatFile] = useState(
     localStorage.getItem("type") || "개원"
   ); // 어떤 서식인지 - 개원 / 운영 / 평가
+
+  // 각 서식의 어떤 파일 이름인지
   const [whatFilesname, setwhatFilesname] = useState("");
 
   // 컴포넌트가 언마운트될 때 마지막으로 선택한 걸 저장 후 다시 마운트 됐을 때 저장된 거 보여주기
@@ -50,24 +52,29 @@ const Home = () => {
       localStorage.setItem("type", whatFile);
     };
   });
-  const whatFileType = (type) => {
+
+  // useCallback 으로 최적화
+  const whatFileType = useCallback((type) => {
     switch (type) {
       case "개원":
-        setwhatFile("개원");
+        setwhatFile((whatFile) => "개원");
         break;
       case "운영":
-        setwhatFile("운영");
+        setwhatFile((whatFile) => "운영");
         break;
       case "평가":
-        setwhatFile("평가");
+        setwhatFile((whatFile) => "평가");
         break;
       default:
         break;
     }
-  };
-  const whatFilesnameType = (type) => {
-    setwhatFilesname(() => type);
-  };
+  }, []);
+
+  // useCallback 으로 최적화
+  const whatFilesnameType = useCallback((type) => {
+    setwhatFilesname((whatFilesname) => type);
+  }, []);
+
   if (whatFile === "개원") {
     return (
       <div className="Home">

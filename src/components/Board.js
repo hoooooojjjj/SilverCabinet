@@ -13,7 +13,7 @@ import { useNavigate } from "react-router-dom";
 import { collection, onSnapshot, orderBy, query } from "firebase/firestore";
 import { db } from "../Myfirebase";
 
-export default function Board() {
+export default React.memo(function Board() {
   const user = useContext(userInfoContext);
   const nav = useNavigate();
   const [bordlist, setbordlist] = useState([]);
@@ -138,4 +138,4 @@ export default function Board() {
       </div>
     </div>
   );
-}
+});

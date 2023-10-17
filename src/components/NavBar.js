@@ -5,6 +5,7 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 
 import "./components.css";
 import { Link, useNavigate } from "react-router-dom";
+import React from "react";
 
 function NavBar({ whatFileType, isToggle }) {
   const nav = useNavigate();
@@ -78,4 +79,4 @@ function NavBar({ whatFileType, isToggle }) {
   );
 }
 
-export default NavBar;
+export default React.memo(NavBar);
